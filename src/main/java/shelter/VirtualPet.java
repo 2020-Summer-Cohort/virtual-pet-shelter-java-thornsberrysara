@@ -12,6 +12,9 @@ public class VirtualPet {
     public VirtualPet(String petName, String petDescription) {
         this.petName = petName;
         this.petDescription = petDescription;
+        this.hunger = 20;
+        this.thirst = 15;
+        this.boredom = 10;
     }
 
     public String getPetName() {
@@ -23,28 +26,28 @@ public class VirtualPet {
     }
 
     public int getHunger() {
-        return 20;
+        return hunger;
     }
 
     public int getThirst() {
-        return 15;
+        return thirst;
     }
 
     public int getBoredom() {
-        return 10;
+        return boredom;
     }
 
-    public int feedAllPets() {
+    public int feed() {
         hunger = hunger - 20;
         return hunger;
     }
 
-    public int waterAllPets() {
+    public int water() {
         thirst = thirst - 15;
         return thirst;
     }
 
-    public int playWithPet() {
+    public int play() {
         boredom = boredom - 10;
         return boredom;
     }

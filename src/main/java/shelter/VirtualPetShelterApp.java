@@ -1,5 +1,6 @@
 package shelter;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
@@ -20,7 +21,8 @@ public class VirtualPetShelterApp {
         do {
             System.out.println("Please view the status of your pets. We want to keep all of their needs as low as possible.");
             System.out.println("Name; Hunger; Thirst; Boredom");
-            for (VirtualPet virtualPet: petShelter.virtualPetMap.values()) {
+            Map<String, VirtualPet> petMap = petShelter.getVirtualPetMap();
+            for (VirtualPet virtualPet: petMap.values()) {
                 System.out.println(virtualPet.getPetName() + "\t" + virtualPet.getHunger() + "\t" + virtualPet.getThirst() + "\t" + virtualPet.getBoredom() + "\t");
             }
             System.out.println("\n What would you like to do?");

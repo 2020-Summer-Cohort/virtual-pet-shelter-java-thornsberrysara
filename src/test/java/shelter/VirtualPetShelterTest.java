@@ -29,6 +29,9 @@ public class VirtualPetShelterTest {
         underTest.addPetToShelter(pet2);
         assertEquals(20, pet1.getHunger());
         assertEquals(20, pet2.getHunger());
+        underTest.feedAllPets();
+        assertEquals(0, pet1.getHunger());
+        assertEquals(0, pet2.getHunger());
     }
 
     @Test
@@ -40,6 +43,9 @@ public class VirtualPetShelterTest {
         underTest.addPetToShelter(pet2);
         assertEquals(15, pet1.getThirst());
         assertEquals(15, pet2.getThirst());
+        underTest.waterAllPets();
+        assertEquals(0, pet1.getThirst());
+        assertEquals(0, pet2.getThirst());
     }
 
     @Test
@@ -59,10 +65,14 @@ public class VirtualPetShelterTest {
         VirtualPet pet2 = new VirtualPet("Eevee", "A fierce and powerful Pokemon");
         underTest.addPetToShelter(pet1);
         underTest.addPetToShelter(pet2);
-        underTest.tick();
         assertEquals(20, pet1.getHunger());
         assertEquals(20, pet2.getHunger());
         assertEquals(15, pet1.getThirst());
         assertEquals(15, pet2.getThirst());
+        underTest.tick();
+        assertEquals(24, pet1.getHunger());
+        assertEquals(24, pet2.getHunger());
+        assertEquals(20, pet1.getThirst());
+        assertEquals(20, pet2.getThirst());
     }
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class VirtualPetShelter {
     public Map<String, VirtualPet> virtualPetMap = new HashMap<>();
+
     public Map<String, VirtualPet> getVirtualPetMap() {
         return virtualPetMap;
     }
@@ -22,18 +23,18 @@ public class VirtualPetShelter {
         virtualPetMap.remove(pet.getPetName(), pet);
     }
     public void feedAllPets() {
-        for (VirtualPet virtualPets : virtualPetMap.values()) {
-            virtualPets.feedAllPets();
+        for (VirtualPet virtualPet : virtualPetMap.values()) {
+            virtualPet.feed();
         }
     }
     public void waterAllPets() {
         for (VirtualPet virtualPets : virtualPetMap.values()) {
-            virtualPets.waterAllPets();
+            virtualPets.water();
         }
     }
 
     public void playWithPet(String petName) {
-        virtualPetMap.get(petName).playWithPet();
+        virtualPetMap.get(petName).play();
     }
 
     public void tick() {
