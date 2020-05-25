@@ -5,70 +5,64 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetShelterTest {
+
     @Test
     public void addPetToShelter() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        underTest.addPet(underTestPokemon);
+        VirtualPet pet = new VirtualPet("Jigglypuff", "A super cute fairy");
+        underTest.addPetToShelter(pet);
     }
 
     @Test
     public void removePetFromShelter() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        underTest.removePet(underTestPokemon);
+        VirtualPet pet = new VirtualPet("Jigglypuff", "A super cute fairy");
+        underTest.removePetFromShelter(pet);
     }
 
     @Test
-    public void returnPetsInShelter() {
+    public void shouldFeedAllPets() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        int size = underTest.getLength();
-        assertEquals(0, size);
+        VirtualPet pet1 = new VirtualPet("Jigglypuff", "A super cute fairy");
+        VirtualPet pet2 = new VirtualPet("Eevee", "A fierce and powerful Pokemon");
+        underTest.addPetToShelter(pet1);
+        underTest.addPetToShelter(pet2);
+        assertEquals(20, pet1.getHunger());
+        assertEquals(20, pet2.getHunger());
     }
 
     @Test
-    public void shouldFeedPets() {
+    public void shouldWaterAllPets() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        VirtualPetShelter underTestPokemon2 = new VirtualPetShelter("Evee");
-        underTest.addPet(underTestPokemon);
-        underTest.addPet(underTestPokemon2);
-        underTest.feedPets();
-        assertEquals(15, underTestPokemon.getHunger());
-        assertEquals(15, underTestPokemon2.getHunger());
+        VirtualPet pet1 = new VirtualPet("Jigglypuff", "A super cute fairy");
+        VirtualPet pet2 = new VirtualPet("Eevee", "A fierce and powerful Pokemon");
+        underTest.addPetToShelter(pet1);
+        underTest.addPetToShelter(pet2);
+        assertEquals(15, pet1.getThirst());
+        assertEquals(15, pet2.getThirst());
     }
 
     @Test
-    public void shouldWaterPets() {
+    public void playWithAPet() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        VirtualPetShelter underTestPokemon2 = new VirtualPetShelter("Evee");
-        underTest.addPet(underTestPokemon);
-        underTest.addPet(underTestPokemon2);
-        underTest.waterPets();
-        assertEquals(10, underTestPokemon.getThirst());
-        assertEquals(10, underTestPokemon2.getThirst());
+        VirtualPet pet1 = new VirtualPet("Jigglypuff", "A super cute fairy");
+        VirtualPet pet2 = new VirtualPet("Eevee", "A fierce and powerful Pokemon");
+        underTest.addPetToShelter(pet1);
+        underTest.addPetToShelter(pet2);
+        underTest.playWithPet("Jigglypuff");
     }
 
     @Test
-    public void shouldPlayWithJigglypuff() {
+    public void shouldTickAll() {
         VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        underTest.addPet(underTestPokemon);
-        underTest.playWithJigglypuff();
-        assertEquals(30, underTestPokemon.getBoredom());
-    }
-
-    @Test
-    public void shouldTickAttributes() {
-        VirtualPetShelter underTest = new VirtualPetShelter();
-        VirtualPetShelter underTestPokemon = new VirtualPetShelter("Jigglypuff");
-        VirtualPetShelter underTestPokemon2 = new VirtualPetShelter("Evee");
-        underTest.addPet(underTestPokemon);
-        underTest.addPet(underTestPokemon2);
+        VirtualPet pet1 = new VirtualPet("Jigglypuff", "A super vute fairy");
+        VirtualPet pet2 = new VirtualPet("Eevee", "A fierce and powerful Pokemon");
+        underTest.addPetToShelter(pet1);
+        underTest.addPetToShelter(pet2);
         underTest.tick();
-        assertEquals(15, underTestPokemon.getHunger());
-        assertEquals(15, underTestPokemon2.getHunger());
+        assertEquals(20, pet1.getHunger());
+        assertEquals(20, pet2.getHunger());
+        assertEquals(15, pet1.getThirst());
+        assertEquals(15, pet2.getThirst());
     }
 }

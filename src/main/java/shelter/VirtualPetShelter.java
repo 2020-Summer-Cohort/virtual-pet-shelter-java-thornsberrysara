@@ -2,62 +2,44 @@ package shelter;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class VirtualPetShelter {
-
-    public HashMap<String, VirtualPet> list = new HashMap<>();
-
-    int hunger;
-    int thirst;
-    int boredom;
-
-    public VirtualPetShelter() {
+    public Map<String, VirtualPet> virtualPetMap = new HashMap<>();
+    public Map<String, VirtualPet> getVirtualPetMap() {
+        return virtualPetMap;
+    }
+    public Collection getPetCollection() {
+        return virtualPetMap.keySet();
+    }
+    public VirtualPet returnPetFromName(String petName) {
+        return virtualPetMap.get(petName);
+    }
+    public void addPetToShelter(VirtualPet pet) {
+        virtualPetMap.put(pet.getPetName(), pet);
+    }
+    public void removePetFromShelter(VirtualPet pet) {
+        virtualPetMap.remove(pet.getPetName(), pet);
+    }
+    public void feedAllPets() {
+        for (VirtualPet virtualPets : virtualPetMap.values()) {
+            virtualPets.feedAllPets();
+        }
+    }
+    public void waterAllPets() {
+        for (VirtualPet virtualPets : virtualPetMap.values()) {
+            virtualPets.waterAllPets();
+        }
     }
 
-    public VirtualPetShelter(String jigglypuff) {
-    }
-
-    public Collection<VirtualPet> getPets() {
-        return list.values();
-    }
-
-    public void addPet(VirtualPetShelter underTestPokemon) {
-    }
-
-    public void removePet(VirtualPetShelter underTestPokemon) {
-    }
-
-    public void feedPets() {
-    }
-
-    public void waterPets() {
-    }
-
-    public void playWithJigglypuff() {
-    }
-
-    public void playWithEvee() {
-    }
-
-    public void playWithDrowzee() {
-    }
-
-    public int getHunger() {
-        return hunger + 15;
-    }
-
-    public int getThirst() {
-        return thirst + 10;
-    }
-
-    public int getBoredom() {
-        return boredom + 30;
-    }
-
-    public int getLength() {
-        return list.size();
+    public void playWithPet(String petName) {
+        virtualPetMap.get(petName).playWithPet();
     }
 
     public void tick() {
+        for (VirtualPet virtualPets : virtualPetMap.values()) {
+            virtualPets.tick();
+        }
     }
 }
+
