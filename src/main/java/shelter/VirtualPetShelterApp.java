@@ -20,10 +20,10 @@ public class VirtualPetShelterApp {
 
         do {
             System.out.println("Please view the status of your pets. We want to keep all of their needs as low as possible.");
-            System.out.println("Name; Hunger; Thirst; Boredom");
+            System.out.println("Name" + "\t\t" + "Hunger" + "\t" + "Thirst" + "\t" + "Boredom");
             Map<String, VirtualPet> petMap = petShelter.getVirtualPetMap();
             for (VirtualPet virtualPet: petMap.values()) {
-                System.out.println(virtualPet.getPetName() + "\t" + virtualPet.getHunger() + "\t" + virtualPet.getThirst() + "\t" + virtualPet.getBoredom() + "\t");
+                System.out.println(virtualPet.getPetName() + "\t\t" + virtualPet.getHunger() + "\t\t" + virtualPet.getThirst() + "\t\t" + virtualPet.getBoredom() + "\t");
             }
             System.out.println("\n What would you like to do?");
             System.out.println("Press [1] to feed all pets.");
